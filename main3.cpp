@@ -1,6 +1,5 @@
 // https://johnnysswlab.com/the-true-price-of-virtual-functions-in-c/
 
-
 #include <chrono>
 #include <inttypes.h>
 #include <iostream>
@@ -93,7 +92,8 @@ int main(void) {
     long double latency = 0;
     timer.Start();
     for (auto i = 0ULL; i < 20e6; i++) {
-      func_calls(vec[i].get(), i);
+      // func_calls(vec[i].get(), i);
+      vec[i]->add1(1, 1);
     }
     latency += timer.Stop();
 
@@ -108,8 +108,8 @@ int main(void) {
     long double latency = 0;
     timer.Start();
     for (auto i = 0ULL; i < 20e6; i++) {
-      // vec[i]->add1(1,1);
-      func_calls(vec[i].get(), i);
+      vec[i]->add1(1, 1);
+      // func_calls(vec[i].get(), i);
     }
     latency += timer.Stop();
 
